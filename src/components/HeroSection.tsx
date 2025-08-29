@@ -36,7 +36,7 @@ const HeroSection = () => {
             <GraduationCap className="h-16 w-16 text-accent" />
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-blue-950 mb-6 leading-tight">
             Graviity <span className="text-accent">Super30</span>
           </h1>
           
@@ -61,7 +61,7 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-4 text-lg"
+              className="border-white text-blue-800 hover:bg-white hover:text-primary font-semibold px-8 py-4 text-lg"
               onClick={scrollToAbout}
             >
               Learn More
