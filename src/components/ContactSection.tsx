@@ -1,63 +1,73 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { 
-  MapPin, 
-  Clock, 
-  Phone, 
-  Mail, 
+"use client";
+
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  MapPin,
+  Clock,
+  Phone,
+  Mail,
   MessageSquare,
   Send,
-  CheckCircle
-} from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+  CheckCircle,
+} from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    course: '',
-    message: ''
+    name: "",
+    phone: "",
+    email: "",
+    course: "",
+    message: "",
   });
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Simple form validation
+
     if (!formData.name || !formData.phone || !formData.course) {
       toast({
         title: "Please fill required fields",
-        description: "Name, phone number, and course selection are required.",
-        variant: "destructive"
+        description:
+          "Name, phone number, and course selection are required.",
+        variant: "destructive",
       });
       return;
     }
 
-    // Simulate form submission
     toast({
       title: "Message sent successfully!",
-      description: "We'll contact you soon to discuss your admission.",
+      description:
+        "We'll contact you soon to discuss your admission.",
     });
 
-    // Reset form
     setFormData({
-      name: '',
-      phone: '',
-      email: '',
-      course: '',
-      message: ''
+      name: "",
+      phone: "",
+      email: "",
+      course: "",
+      message: "",
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -65,41 +75,45 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: "Address",
-      content: "2-2, 647/52, Shivam Rd, CE Colony, Sukh Vihar, Bagh Amberpet, Amberpet, Hyderabad, Telangana 500013",
-      color: "text-primary"
+      content:
+        "2-2, 647/52, Shivam Rd, CE Colony, Sukh Vihar, Bagh Amberpet, Amberpet, Hyderabad, Telangana 500013",
+      color: "text-primary",
     },
     {
       icon: Clock,
       title: "Timings",
       content: "Monday – Saturday: 7 AM – 9 PM\nSunday: Closed",
-      color: "text-accent"
+      color: "text-accent",
     },
     {
       icon: Phone,
       title: "Contact",
       content: "Call us for admissions and course details",
-      color: "text-success"
+      color: "text-success",
     },
     {
       icon: Mail,
       title: "Email",
       content: "Send us your queries anytime",
-      color: "text-warning"
-    }
+      color: "text-warning",
+    },
   ];
 
   return (
     <section id="contact" className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4">
+        {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Get in <span className="text-primary">Touch</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to start your journey? Contact us today for admissions and course details
+            Ready to start your journey? Contact us today for admissions
+            and course details
           </p>
         </div>
 
+        {/* Contact Info + Form */}
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
@@ -108,7 +122,8 @@ const ContactSection = () => {
                 Contact Information
               </h3>
               <p className="text-muted-foreground mb-8">
-                Visit us, call us, or send us a message. We're here to help you achieve your dreams.
+                Visit us, call us, or send us a message. We're here to
+                help you achieve your dreams.
               </p>
             </div>
 
@@ -116,14 +131,21 @@ const ContactSection = () => {
               {contactInfo.map((info, index) => {
                 const IconComponent = info.icon;
                 return (
-                  <Card key={index} className="hover:shadow-md transition-shadow">
+                  <Card
+                    key={index}
+                    className="hover:shadow-md transition-shadow"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-start">
-                        <div className={`p-3 rounded-full bg-secondary mr-4 ${info.color}`}>
+                        <div
+                          className={`p-3 rounded-full bg-secondary mr-4 ${info.color}`}
+                        >
                           <IconComponent className="h-6 w-6" />
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-lg mb-2">{info.title}</h4>
+                          <h4 className="font-semibold text-lg mb-2">
+                            {info.title}
+                          </h4>
                           <p className="text-muted-foreground whitespace-pre-line">
                             {info.content}
                           </p>
@@ -141,7 +163,9 @@ const ContactSection = () => {
                 <div className="flex items-center">
                   <MessageSquare className="h-8 w-8 text-success mr-4" />
                   <div className="flex-1">
-                    <h4 className="font-semibold text-lg mb-1">WhatsApp Us</h4>
+                    <h4 className="font-semibold text-lg mb-1">
+                      WhatsApp Us
+                    </h4>
                     <p className="text-muted-foreground text-sm">
                       Get instant responses to your queries
                     </p>
@@ -217,9 +241,15 @@ const ContactSection = () => {
                     required
                   >
                     <option value="">Select a course</option>
-                    <option value="IIT-JEE Mains & Advanced">IIT-JEE Mains & Advanced</option>
-                    <option value="NEET Preparation">NEET Preparation</option>
-                    <option value="Foundation Courses">Foundation Courses (Class 10+)</option>
+                    <option value="IIT-JEE Mains & Advanced">
+                      IIT-JEE Mains & Advanced
+                    </option>
+                    <option value="NEET Preparation">
+                      NEET Preparation
+                    </option>
+                    <option value="Foundation Courses">
+                      Foundation Courses (Class 10+)
+                    </option>
                   </select>
                 </div>
 
@@ -244,13 +274,35 @@ const ContactSection = () => {
           </Card>
         </div>
 
+        {/* Map Section */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-center mb-6">
+            Find Us Here
+          </h3>
+          <div className="mt-16">
+   <div className="w-full h-[400px] rounded-2xl overflow-hidden shadow-lg">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.279505134685!2d78.51039897429035!3d17.39836908349068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99a41ae68e01%3A0xd4b1f5bdcb0ada80!2sNoodle%20House!5e0!3m2!1sen!2sin!4v1756709091972!5m2!1sen!2sin"   width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+</div>
+        </div>
+
         {/* Additional Info */}
         <div className="mt-16 bg-primary text-primary-foreground rounded-2xl p-8 md:p-12 text-center">
           <CheckCircle className="h-16 w-16 mx-auto mb-6" />
-          <h3 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h3>
+          <h3 className="text-3xl font-bold mb-4">
+            Ready to Start Your Journey?
+          </h3>
           <p className="text-lg mb-6 max-w-2xl mx-auto opacity-90">
-            Join thousands of successful students who chose Graviity Super30 for their 
-            IIT-JEE and NEET preparation. Your success story starts here!
+            Join thousands of successful students who chose Graviity
+            Super30 for their IIT-JEE and NEET preparation. Your success
+            story starts here!
           </p>
           <div className="grid md:grid-cols-3 gap-8 mt-8">
             <div>
